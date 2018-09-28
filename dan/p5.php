@@ -8,12 +8,12 @@ $fecha2 = '2019-01-01';
 $tolernciaInicio = 15;
 $tolernciaSubsecuente = 4;
 $totalDiasP = 365;
-$prima = 120;
+$prima = 1200;
 $primerPago = 60;
 
 $conn = new PDO('mysql:host=localhost;dbname=seguros','root','abrir123');
 $stmt = $conn->prepare("SELECT * from pago where fol_pol = :np");
-    $stmt->execute(array(':np'=>'pol-0001'));
+    $stmt->execute(array(':np'=>'pol9909163'));
     $pagosBD = $stmt->fetchAll();
 
 foreach ($pagosBD as $value) {
@@ -59,10 +59,7 @@ echo "::::::::::::::::::::::::<br>";
         echo "<br>::::::::::::::::::::::::<br>";
         $fx = '2018-01-05';//
         $fy = $fechasPago[0]; $pagado = 0;
-
-
-
-
+        
         foreach ($pagosBD as $i => $v) {
           if ($i==0) {$tl = $tolernciaInicio; $pague = $data['primerPago'];
           }else{$tl = $tolernciaSubsecuente;$pague = $data['pagosDe'];} 
